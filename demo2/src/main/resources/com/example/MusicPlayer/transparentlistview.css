@@ -1,0 +1,6 @@
+.list-view {
+    -fx-control-inner-background:#140b0b;
+}
+.list-cell {
+    -fx-text-fill: #FFFFFF;
+}

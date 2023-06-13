@@ -8,7 +8,7 @@
     -fx-background-color:linear-gradient(from 0% 0% to 100% 100%,#140b0b,#2e0d0d);
 }
 .transparent{
-    -fx-background-color:0,0,0,0;
+    -fx-background-color:rgba(0,0,0,0.0);
 }
 .playgif{
     -fx-background-image: url(Wave.gif);
@@ -17,6 +17,9 @@
     -fx-background-size: 100% 100%;
 }
 .Text{
-    -fx-background-color: 0 0 0 0;
+    -fx-background-color: rgba(0,0,0,0.0);
     -fx-text-fill: #FFFFFF;
+}
+.Style {
+    -fx-background-color: rgba(0,0,0,0.0);
 }
