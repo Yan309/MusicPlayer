@@ -4,10 +4,7 @@ Group Members:
     Name: M. Aliyan                 (FA21-BCS-105)
     Name: Ajlal Haider              (FA21-BCS-054)
 */
-
 package com.example.MusicPlayer;
-
-
 
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
@@ -34,8 +31,6 @@ import java.util.*;
 
 public class MusicPlayer extends Application {
 
-    private MusicPlayerController2 controller;
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -43,12 +38,12 @@ public class MusicPlayer extends Application {
     @Override
     public void start(Stage primaryStage){
 
-        controller = new MusicPlayerController2();
+        MusicPlayerController2 controller = new MusicPlayerController2();
 
         BorderPane root = new BorderPane();
         root.setPrefSize(766.0, 458.0);
         root.getStyleClass().add("background");
-        root.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("Styling.css")).toExternalForm());
         root.setPadding(new Insets(10));
 
         VBox libraryPane = new VBox(10);
@@ -67,16 +62,16 @@ public class MusicPlayer extends Application {
         HBox controlsPane = new HBox(10);
         controlsPane.setPrefSize(600.0, 72.0);
         controlsPane.getStyleClass().add("bottom");
-        controlsPane.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        controlsPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("Styling.css")).toExternalForm());
         controlsPane.setAlignment(Pos.CENTER);
         controlsPane.getChildren().addAll(controller.getPlayPreviousButton(), controller.getPlayButton(), controller.getPlayNextButton(), controller.getSortButton(),
                 controller.getReversesortbutton(),
-                controller.getShuffleButton(),controller.Empty);
+                controller.getShuffleButton(), controller.Empty);
 
         VBox control = new VBox(10);
         AnchorPane wave = new AnchorPane();
         wave.getStyleClass().add("playgif");
-        wave.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        wave.getStylesheets().add(Objects.requireNonNull(getClass().getResource("Styling.css")).toExternalForm());
         control.setAlignment(Pos.CENTER);
         control.setPadding(new Insets(15));
         control.getChildren().addAll(controller.Current,wave);
@@ -97,28 +92,27 @@ public class MusicPlayer extends Application {
 }
 
 class MusicPlayerController2 {
-    private Queue<String> playlistQueue;
-    private List<String> musicLibrary;
+    private final Queue<String> playlistQueue;
+    private final List<String> musicLibrary;
     private List<String> currentPlaylist;
     private MediaPlayer mediaPlayer;
-    private ListView<String> libraryListView;
-    private ListView<String> playlistListView;
-    private JFXButton addButton;
-    private JFXButton playNextButton;
-    private JFXButton playPreviousButton;
-    private JFXButton sortButton;
-    private JFXButton shuffleButton;
-    private JFXButton playButton;
-    private JFXButton savePlaylistButton;
-    private JFXButton loadPlaylistButton;
-    private Label libraryLabel;
+    private final ListView<String> libraryListView;
+    private final ListView<String> playlistListView;
+    private final JFXButton addButton;
+    private final JFXButton playNextButton;
+    private final JFXButton playPreviousButton;
+    private final JFXButton sortButton;
+    private final JFXButton shuffleButton;
+    private final JFXButton playButton;
+    private final JFXButton savePlaylistButton;
+    private final JFXButton loadPlaylistButton;
+    private final Label libraryLabel;
 
-    private Label playlistLabel;
+    private final Label playlistLabel;
     public Label Current;
-    private Stack<String> previousSongs;
-    private JFXButton reversesortbutton;
+    private final Stack<String> previousSongs;
+    private final JFXButton reversesortbutton;
     public JFXButton Empty;
-    private ImageView playButtonImage;
 
     public MusicPlayerController2() {
         playlistQueue = new LinkedList<>();
@@ -136,17 +130,17 @@ class MusicPlayerController2 {
         previousSongs = new Stack<>();
         libraryListView = new ListView<>();
         libraryListView.getStyleClass().add("Style");
-        libraryListView.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        libraryListView.getStylesheets().add(Objects.requireNonNull(getClass().getResource("Styling.css")).toExternalForm());
         playlistListView = new ListView<>();
         playlistListView.getStyleClass().add("Style");
-        playlistListView.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+        playlistListView.getStylesheets().add(Objects.requireNonNull(getClass().getResource("Styling.css")).toExternalForm());
         addButton = new JFXButton("Add to Playlist");
         addButton.setPrefSize(102.0, 49.0);
         addButton.getStyleClass().add("Text");
 
         playButton = new JFXButton();
         playButton.getStyleClass().add("Text");
-        playButtonImage = new ImageView(new Image(getClass().getResourceAsStream("play-button.png")));
+        ImageView playButtonImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("play-button.png"))));
         playButtonImage.setFitHeight(41.0);
         playButtonImage.setFitWidth(58.0);
         playButtonImage.setPreserveRatio(true);
@@ -157,7 +151,7 @@ class MusicPlayerController2 {
 
         playNextButton = new JFXButton();
         playNextButton.getStyleClass().add("Text");
-        ImageView nextButtonImage = new ImageView(new Image(getClass().getResourceAsStream("rewind-button.png")));
+        ImageView nextButtonImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("rewind-button.png"))));
         nextButtonImage.setFitHeight(41.0);
         nextButtonImage.setFitWidth(58.0);
         nextButtonImage.setPreserveRatio(true);
@@ -170,7 +164,7 @@ class MusicPlayerController2 {
         playPreviousButton = new JFXButton();
         playPreviousButton.setPrefSize(44.0, 49.0);
         playPreviousButton.getStyleClass().add("Text");
-        ImageView prevButtonImage = new ImageView(new Image(getClass().getResourceAsStream("rewind-button.png")));
+        ImageView prevButtonImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("rewind-button.png"))));
         prevButtonImage.setFitHeight(41.0);
         prevButtonImage.setFitWidth(58.0);
         prevButtonImage.setPreserveRatio(true);
@@ -182,7 +176,7 @@ class MusicPlayerController2 {
         shuffleButton = new JFXButton();
         shuffleButton.setPrefSize(63.0, 49.0);
         shuffleButton.getStyleClass().add("Text");
-        ImageView shuffleButtonImage = new ImageView(new Image(getClass().getResourceAsStream("icons8-shuffle-32.png")));
+        ImageView shuffleButtonImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("icons8-shuffle-32.png"))));
         shuffleButtonImage.setFitHeight(29.0);
         shuffleButtonImage.setFitWidth(35.0);
         shuffleButtonImage.setPreserveRatio(true);
@@ -204,7 +198,7 @@ class MusicPlayerController2 {
         sortButton.getStyleClass().add("Text");
 
         reversesortbutton  = new JFXButton("Reverse Sort Playlist");
-        reversesortbutton.setPrefSize(102.0, 49.0);
+        reversesortbutton.setPrefSize(150.0, 49.0);
         reversesortbutton.getStyleClass().add("Text");
 
         libraryLabel = new Label("Library");
@@ -286,8 +280,7 @@ class MusicPlayerController2 {
         playPreviousButton.setOnAction(event -> {
             if (!previousSongs.isEmpty()) {
                 String previousSong = previousSongs.pop();
-                Queue<String> temp=new LinkedList<>();
-                temp.addAll(currentPlaylist);
+                Queue<String> temp = new LinkedList<>(currentPlaylist);
                 currentPlaylist = new ArrayList<>();
                 refreshPlaylist();
                 currentPlaylist.add(previousSong);
@@ -442,9 +435,9 @@ class MusicPlayerController2 {
     }
 
     private void playSong(String songPath) {
-        Media media = null;
+        Media media;
         try {
-            media = new Media(getClass().getResource("/" + songPath).toURI().toString());
+            media = new Media(Objects.requireNonNull(getClass().getResource("/" + songPath)).toURI().toString());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
